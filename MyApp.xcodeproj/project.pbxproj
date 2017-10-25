@@ -13,10 +13,10 @@
 		5E04E9CB1F8DEF3D00FED1DB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5E04E9CA1F8DEF3D00FED1DB /* Assets.xcassets */; };
 		5E04E9CE1F8DEF3D00FED1DB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5E04E9CC1F8DEF3D00FED1DB /* LaunchScreen.storyboard */; };
 		5E1A6DB81F9C0995003F600D /* LoginTextFeild.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1A6DB71F9C0995003F600D /* LoginTextFeild.swift */; };
+		5E2E8F8B1FA028A800FBB6E6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5E2E8F8A1FA028A800FBB6E6 /* GoogleService-Info.plist */; };
 		5E3FFD0D1F8E153400F7C16C /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E3FFD0C1F8E153400F7C16C /* RegisterViewController.swift */; };
 		5E74F67D1F8F0CD000B4845E /* BeaconViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E74F67C1F8F0CD000B4845E /* BeaconViewController.swift */; };
 		5E7C05281F91F9CF00F378D5 /* userData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E7C05271F91F9CF00F378D5 /* userData.swift */; };
-		5EA482761F8DF1F300C686E7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5EA482751F8DF1F300C686E7 /* GoogleService-Info.plist */; };
 		5EFAE0F81F9C4C93002C49BA /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EFAE0F71F9C4C93002C49BA /* ForgotPasswordViewController.swift */; };
 		DC23F1C34F56BAD2DD228BF6 /* Pods_MyApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 219DD3EFF4B953E7F9F5DD5F /* Pods_MyApp.framework */; };
 /* End PBXBuildFile section */
@@ -32,10 +32,10 @@
 		5E04E9CD1F8DEF3D00FED1DB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5E04E9CF1F8DEF3D00FED1DB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5E1A6DB71F9C0995003F600D /* LoginTextFeild.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTextFeild.swift; sourceTree = "<group>"; };
+		5E2E8F8A1FA028A800FBB6E6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5E3FFD0C1F8E153400F7C16C /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		5E74F67C1F8F0CD000B4845E /* BeaconViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeaconViewController.swift; sourceTree = "<group>"; };
 		5E7C05271F91F9CF00F378D5 /* userData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = userData.swift; sourceTree = "<group>"; };
-		5EA482751F8DF1F300C686E7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5ECA602E1F9D3C1C00734A8A /* MyApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MyApp.entitlements; sourceTree = "<group>"; };
 		5EFAE0F71F9C4C93002C49BA /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
 		7C304006EA964DC220C57D0F /* Pods-MyApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MyApp/Pods-MyApp.debug.xcconfig"; sourceTree = "<group>"; };
@@ -76,8 +76,8 @@
 		5E04E9C21F8DEF3D00FED1DB /* MyApp */ = {
 			isa = PBXGroup;
 			children = (
+				5E2E8F8A1FA028A800FBB6E6 /* GoogleService-Info.plist */,
 				5ECA602E1F9D3C1C00734A8A /* MyApp.entitlements */,
-				5EA482751F8DF1F300C686E7 /* GoogleService-Info.plist */,
 				5E04E9C31F8DEF3D00FED1DB /* AppDelegate.swift */,
 				5E04E9C51F8DEF3D00FED1DB /* SignInViewController.swift */,
 				5E04E9C71F8DEF3D00FED1DB /* Main.storyboard */,
@@ -149,6 +149,9 @@
 						CreatedOnToolsVersion = 9.1;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
 							com.apple.Push = {
 								enabled = 1;
 							};
@@ -180,7 +183,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5E04E9CE1F8DEF3D00FED1DB /* LaunchScreen.storyboard in Resources */,
-				5EA482761F8DF1F300C686E7 /* GoogleService-Info.plist in Resources */,
+				5E2E8F8B1FA028A800FBB6E6 /* GoogleService-Info.plist in Resources */,
 				5E04E9CB1F8DEF3D00FED1DB /* Assets.xcassets in Resources */,
 				5E04E9C91F8DEF3D00FED1DB /* Main.storyboard in Resources */,
 			);
