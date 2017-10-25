@@ -7,11 +7,13 @@
 //
 
 import UIKit
+import FirebaseAuth
 
-class ForgotPasswordViewController: UIViewController {
+class ForgotPasswordViewController: UIViewController, UIScrollViewDelegate {
     var keyboardAdjusted = false
     var lastKeyboardOffset: CGFloat = 0.0
 
+    @IBOutlet weak var ForgotScrollView: UIScrollView!
     @IBOutlet weak var resetEmail: LoginTextFeild!
     @IBOutlet weak var resetMessage: UILabel!
     
@@ -21,6 +23,7 @@ class ForgotPasswordViewController: UIViewController {
         // Do any additional setup after loading the view.
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(ForgotPasswordViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
+        ForgotScrollView.contentSize = view.bounds.size
     }
 
     override func didReceiveMemoryWarning() {
@@ -68,10 +71,17 @@ class ForgotPasswordViewController: UIViewController {
     }
     
     @IBAction func resendPassword(_ sender: UIButton) {
-        resetMessage.text = "Password sent to " + resetEmail.text! + "\n" + "Redirecting to Login Screen"
-        let when = DispatchTime.now() + 3
-        DispatchQueue.main.asyncAfter(deadline: when) {
-            self.performSegue(withIdentifier: "ResetToLogin", sender: Any?.self)
+        
+        if resetEmail.text == nil{
+        resetMessage.text = "Please use a valid email ID"
+        }
+        Auth.auth().sendPasswordReset(withEmail: resetEmail.text!) { (error) in
+            print("email sent for password reset")
+            self.resetMessage.text = "Password sent to " + self.resetEmail.text! + "\n" + "Redirecting to Login Screen"
+            let when = DispatchTime.now() + 3
+            DispatchQueue.main.asyncAfter(deadline: when) {
+                self.performSegue(withIdentifier: "ResetToLogin", sender: Any?.self)
+            }
         }
         
     }
