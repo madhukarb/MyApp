@@ -17,6 +17,7 @@ class ForgotPasswordViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var resetEmail: LoginTextFeild!
     @IBOutlet weak var resetMessage: UILabel!
     
+    @IBOutlet weak var PasswordResetView: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -24,6 +25,10 @@ class ForgotPasswordViewController: UIViewController, UIScrollViewDelegate {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(ForgotPasswordViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
         ForgotScrollView.contentSize = view.bounds.size
+        PasswordResetView.center.y = view.frame.height
+        UIView.animate(withDuration: 1, delay: 0, usingSpringWithDamping: 5, initialSpringVelocity: 15, options: UIViewAnimationOptions.allowUserInteraction, animations: ({
+            self.PasswordResetView.center.y = self.view.frame.height/2
+        }), completion: nil)
     }
 
     override func didReceiveMemoryWarning() {
