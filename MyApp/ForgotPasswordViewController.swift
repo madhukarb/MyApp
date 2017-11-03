@@ -24,13 +24,16 @@ class ForgotPasswordViewController: UIViewController, UIScrollViewDelegate {
         // Do any additional setup after loading the view.
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(ForgotPasswordViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
+
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
         ForgotScrollView.contentSize = view.bounds.size
         PasswordResetView.center.y = view.frame.height
-        UIView.animate(withDuration: 1, delay: 0, usingSpringWithDamping: 5, initialSpringVelocity: 15, options: UIViewAnimationOptions.allowUserInteraction, animations: ({
+        UIView.animate(withDuration: 1.5, delay: 0, usingSpringWithDamping: 5, initialSpringVelocity: 15, options: UIViewAnimationOptions.allowUserInteraction, animations: ({
             self.PasswordResetView.center.y = self.view.frame.height/2
         }), completion: nil)
     }
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         
@@ -48,6 +51,12 @@ class ForgotPasswordViewController: UIViewController, UIScrollViewDelegate {
         super.viewDidDisappear(animated)
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        self.navigationController?.isNavigationBarHidden = true
+        self.navigationController?.popViewController(animated: false)
     }
     
     @objc func keyboardWillShow(notification: NSNotification) {
