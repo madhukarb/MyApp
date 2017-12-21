@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5E00065E1FE8E78800379AC0 /* QuizTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E00065D1FE8E78800379AC0 /* QuizTableViewCell.swift */; };
+		5E0006601FE8FC8B00379AC0 /* QuizViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E00065F1FE8FC8B00379AC0 /* QuizViewController.swift */; };
 		5E04E9C41F8DEF3D00FED1DB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E04E9C31F8DEF3D00FED1DB /* AppDelegate.swift */; };
 		5E04E9C61F8DEF3D00FED1DB /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E04E9C51F8DEF3D00FED1DB /* SignInViewController.swift */; };
 		5E04E9C91F8DEF3D00FED1DB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5E04E9C71F8DEF3D00FED1DB /* Main.storyboard */; };
@@ -21,6 +23,7 @@
 		5E6AE12A1FA92CA5003E2F16 /* SettingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E6AE1291FA92CA5003E2F16 /* SettingTableViewController.swift */; };
 		5E6AE12C1FA9345B003E2F16 /* WecomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E6AE12B1FA9345B003E2F16 /* WecomeViewController.swift */; };
 		5E74F67D1F8F0CD000B4845E /* BeaconViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E74F67C1F8F0CD000B4845E /* BeaconViewController.swift */; };
+		5E755EAF1FE225F600CF9E40 /* QuizTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E755EAE1FE225F600CF9E40 /* QuizTableViewController.swift */; };
 		5E7C05281F91F9CF00F378D5 /* userStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E7C05271F91F9CF00F378D5 /* userStruct.swift */; };
 		5EEEE95D1FA6C11E001E3E81 /* ContentTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EEEE95C1FA6C11E001E3E81 /* ContentTabBarController.swift */; };
 		5EFAE0F81F9C4C93002C49BA /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EFAE0F71F9C4C93002C49BA /* ForgotPasswordViewController.swift */; };
@@ -30,6 +33,8 @@
 /* Begin PBXFileReference section */
 		0D7AC24D37B893B468F432EE /* Pods-MyApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-MyApp/Pods-MyApp.release.xcconfig"; sourceTree = "<group>"; };
 		219DD3EFF4B953E7F9F5DD5F /* Pods_MyApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5E00065D1FE8E78800379AC0 /* QuizTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizTableViewCell.swift; sourceTree = "<group>"; };
+		5E00065F1FE8FC8B00379AC0 /* QuizViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizViewController.swift; sourceTree = "<group>"; };
 		5E04E9C01F8DEF3D00FED1DB /* MyApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E04E9C31F8DEF3D00FED1DB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5E04E9C51F8DEF3D00FED1DB /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
@@ -46,6 +51,7 @@
 		5E6AE1291FA92CA5003E2F16 /* SettingTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewController.swift; sourceTree = "<group>"; };
 		5E6AE12B1FA9345B003E2F16 /* WecomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WecomeViewController.swift; sourceTree = "<group>"; };
 		5E74F67C1F8F0CD000B4845E /* BeaconViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeaconViewController.swift; sourceTree = "<group>"; };
+		5E755EAE1FE225F600CF9E40 /* QuizTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = QuizTableViewController.swift; path = /Users/Madhukar/Documents/ios/TCS/MyApp/MyApp/QuizTableViewController.swift; sourceTree = "<absolute>"; };
 		5E7C05271F91F9CF00F378D5 /* userStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = userStruct.swift; sourceTree = "<group>"; };
 		5ECA602E1F9D3C1C00734A8A /* MyApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MyApp.entitlements; sourceTree = "<group>"; };
 		5EEEE95C1FA6C11E001E3E81 /* ContentTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentTabBarController.swift; sourceTree = "<group>"; };
@@ -93,6 +99,9 @@
 				5E04E9C31F8DEF3D00FED1DB /* AppDelegate.swift */,
 				5E04E9C51F8DEF3D00FED1DB /* SignInViewController.swift */,
 				5E04E9C71F8DEF3D00FED1DB /* Main.storyboard */,
+				5E00065F1FE8FC8B00379AC0 /* QuizViewController.swift */,
+				5E00065D1FE8E78800379AC0 /* QuizTableViewCell.swift */,
+				5E755EAE1FE225F600CF9E40 /* QuizTableViewController.swift */,
 				5E3764A01FA962DC00B430BB /* PosterViewController.swift */,
 				5E6AE12B1FA9345B003E2F16 /* WecomeViewController.swift */,
 				5EEEE95C1FA6C11E001E3E81 /* ContentTabBarController.swift */,
@@ -284,11 +293,14 @@
 				5E6AE12C1FA9345B003E2F16 /* WecomeViewController.swift in Sources */,
 				5E1A6DB81F9C0995003F600D /* LoginTextFeild.swift in Sources */,
 				5E33EA971FA5446D00431575 /* BeconData.swift in Sources */,
+				5E00065E1FE8E78800379AC0 /* QuizTableViewCell.swift in Sources */,
 				5E7C05281F91F9CF00F378D5 /* userStruct.swift in Sources */,
 				5E6AE12A1FA92CA5003E2F16 /* SettingTableViewController.swift in Sources */,
+				5E0006601FE8FC8B00379AC0 /* QuizViewController.swift in Sources */,
 				5EEEE95D1FA6C11E001E3E81 /* ContentTabBarController.swift in Sources */,
 				5E04E9C41F8DEF3D00FED1DB /* AppDelegate.swift in Sources */,
 				5E33EA991FA5493B00431575 /* LoggedInUser.swift in Sources */,
+				5E755EAF1FE225F600CF9E40 /* QuizTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

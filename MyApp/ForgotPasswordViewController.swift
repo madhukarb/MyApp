@@ -12,7 +12,7 @@ import FirebaseAuth
 class ForgotPasswordViewController: UIViewController, UIScrollViewDelegate {
     var keyboardAdjusted = false
     var lastKeyboardOffset: CGFloat = 0.0
-
+    
     @IBOutlet weak var ForgotScrollView: UIScrollView!
     @IBOutlet weak var resetEmail: LoginTextFeild!
     @IBOutlet weak var resetMessage: UILabel!
@@ -20,13 +20,13 @@ class ForgotPasswordViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var PasswordResetView: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(ForgotPasswordViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
-
+        
     }
-
+    
     override func viewDidAppear(_ animated: Bool) {
         ForgotScrollView.contentSize = view.bounds.size
         PasswordResetView.center.y = view.frame.height
@@ -44,7 +44,7 @@ class ForgotPasswordViewController: UIViewController, UIScrollViewDelegate {
         super.viewWillAppear(animated)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: .UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: .UIKeyboardWillHide, object: nil)
-       
+        
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -87,26 +87,31 @@ class ForgotPasswordViewController: UIViewController, UIScrollViewDelegate {
     @IBAction func resendPassword(_ sender: UIButton) {
         
         if resetEmail.text == nil{
-        resetMessage.text = "Please use a valid email ID"
+            resetMessage.text = "Please use a valid email ID"
         }
         Auth.auth().sendPasswordReset(withEmail: resetEmail.text!) { (error) in
-            print("email sent for password reset")
-            self.resetMessage.text = "Password sent to " + self.resetEmail.text! + "\n" + "Redirecting to Login Screen"
-            let when = DispatchTime.now() + 3
-            DispatchQueue.main.asyncAfter(deadline: when) {
-                self.performSegue(withIdentifier: "ResetToLogin", sender: Any?.self)
+            var alert = ""
+            var message = ""
+            if error == nil{
+                //self.resetMessage.text = "Password sent to " + self.resetEmail.text!
+                alert = "Password sent to " + self.resetEmail.text!
+                message = "Follow the instructions on email"
+                self.resetEmail.text = ""
+                //self.performSegue(withIdentifier: "LogOut", sender: nil)
             }
+            else{
+                alert = (error?.localizedDescription)!
+                message = "Retry with proper email ID or contact Admin"
+            }
+            let resetAlert = UIAlertController(title: alert, message: message, preferredStyle: .alert)
+            
+            
+            resetAlert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil
+            ))
+            self.present(resetAlert, animated: true, completion: nil)
         }
         
     }
-    /*
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+    
 }
