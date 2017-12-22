@@ -10,10 +10,10 @@ import FirebaseDatabase
 
 class QuizTableViewController: UITableViewController {
     
-    
+    var activeQuizName : String?
     @IBOutlet weak var quizNumber: UILabel!
     //var model: [(String, String, String)] = [(" "," "," ")]
-    var model:[(quizName: String, publishDate: String, winner: String)] = []
+    var model:[(quizName: String, publishDate: String, winner: String, quizStatus: String)] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,9 +22,9 @@ class QuizTableViewController: UITableViewController {
         ref.child("quiz").observeSingleEvent(of: .value) { (snapshot) in
             let postDict = snapshot.value as? [String : AnyObject]
             for quiz in postDict!{
-                //print(quiz.key)
                 var tempWinner = " "
                 var tempPublishDate = " "
+                var tempQuizStatus = " "
                 for val in (quiz.value as? Dictionary<String, Any>)!{
                     if val.key == "Publish Date"{
                         tempPublishDate = val.value as! String
@@ -32,17 +32,18 @@ class QuizTableViewController: UITableViewController {
                     if val.key == "Winner"{
                         tempWinner = val.value as! String
                     }
+                    if val.key == "Status"{
+                        tempQuizStatus = val.value as! String
+                    }
                 }
-                self.model.append((quizName: quiz.key , publishDate: tempPublishDate, winner: tempWinner))
+                if (tempQuizStatus == "Active" || tempQuizStatus == "Ended"){
+                self.model.append((quizName: quiz.key , publishDate: tempPublishDate, winner: tempWinner, quizStatus: tempQuizStatus))
+                }
                 self.tableView.reloadData()
             }
-            
           
         }
-            
-        
-        print(model)
-        print(model.count)
+ 
         }
     
    
@@ -61,7 +62,6 @@ class QuizTableViewController: UITableViewController {
         
         override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
             // #warning Incomplete implementation, return the number of rows
-            print(model.count)
             return model.count
         }
         
@@ -69,20 +69,34 @@ class QuizTableViewController: UITableViewController {
         override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
             let QuizCell = tableView.dequeueReusableCell(withIdentifier: "QuizCell") as? QuizTableViewCell
            
-            //QuizCell.textLabel?.text = model[indexPath.row].quizName
-            //QuizCell.detailTextLabel?.text = model[indexPath.row].publishDate
             QuizCell?.quizNumber.text = model[indexPath.row].quizName
             QuizCell?.quizWinner.text = model[indexPath.row].winner
             QuizCell?.quizPublishDate.text = model[indexPath.row].publishDate
-            if indexPath.row == 0 {
-            QuizCell?.backgroundColor = UIColor.blue
+            if model[indexPath.row].quizStatus == "Active" {
+            QuizCell?.backgroundColor = UIColor.green
+                
+            }
+            else{
+                QuizCell?.backgroundColor = UIColor.gray
             }
            
             
             return QuizCell!
         }
-        
-        
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destViewController = segue.destination as? QuizViewController{
+            destViewController.quizName = "Quiz 0"
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if model[indexPath.row].quizStatus == "Active" {
+            activeQuizName = model[indexPath.row].quizName
+            performSegue(withIdentifier: "ShowQuiz", sender: (Any).self)
+        }
+
+    }
         /*
          // Override to support conditional editing of the table view.
          override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {

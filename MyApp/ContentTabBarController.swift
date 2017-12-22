@@ -12,7 +12,10 @@ class ContentTabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.setHidesBackButton(true, animated: false)
+        
         self.title = tabBar.items?[0].title
+        self.tabBar.items?[0].image = UIImage(named: "quiz75")
+        self.tabBar.items?[1].image = UIImage(named: "Poster75")
     }
 
     override func didReceiveMemoryWarning() {
