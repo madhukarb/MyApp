@@ -80,7 +80,7 @@ class QuizTableViewController: UITableViewController {
                 QuizCell?.backgroundColor = UIColor.gray
             }
            
-            
+            print("quiz called")
             return QuizCell!
         }
     

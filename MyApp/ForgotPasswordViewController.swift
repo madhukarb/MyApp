@@ -84,6 +84,13 @@ class ForgotPasswordViewController: UIViewController, UIScrollViewDelegate {
         return keyboardSize.cgRectValue.height
     }
     
+    
+    
+    @IBAction func PasswordResetCancelled(_ sender: UIButton) {
+        performSegue(withIdentifier: "UnwindToLoginFromForgotPassword", sender: nil)
+    }
+    
+    
     @IBAction func resendPassword(_ sender: UIButton) {
         
         if resetEmail.text == nil{
@@ -93,11 +100,12 @@ class ForgotPasswordViewController: UIViewController, UIScrollViewDelegate {
             var alert = ""
             var message = ""
             if error == nil{
-                //self.resetMessage.text = "Password sent to " + self.resetEmail.text!
-                alert = "Password sent to " + self.resetEmail.text!
-                message = "Follow the instructions on email"
-                self.resetEmail.text = ""
-                //self.performSegue(withIdentifier: "LogOut", sender: nil)
+                
+                let alert = UIAlertController(title: "Reset sucessful", message: "Follow instruction on email", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .cancel, handler: { (action : UIAlertAction)  in
+                    self.performSegue(withIdentifier: "UnwindToLoginFromForgotPassword", sender: nil)
+                }))
+                self.present(alert, animated: true, completion: nil)
             }
             else{
                 alert = (error?.localizedDescription)!

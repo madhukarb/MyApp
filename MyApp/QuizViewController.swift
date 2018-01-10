@@ -23,6 +23,11 @@ class QuizViewController: UIViewController {
     var quizStatus : String?
     var quizName : String?
     var progressBarIncrement : Float = 0.0
+    var usersSavedAnswers = [" ":" "]
+    
+
+    //let quizStarttime
+    //var timer = Timer()
     
     @IBOutlet weak var progressBar: UIProgressView!
     @IBOutlet weak var AnswerOne: UIButton!
@@ -31,7 +36,23 @@ class QuizViewController: UIViewController {
     @IBOutlet weak var AnswerFour: UIButton!
     @IBOutlet weak var DisplayQuestion: UILabel!
     
-    override func viewWillAppear(_ animated: Bool) {
+    
+    
+    @objc func swipeAcion(swipe : UISwipeGestureRecognizer) {
+        
+        print("swiped")
+    }
+
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view.
+        //LoadQuestionAnswer(qaSet: quizArray[0])
+        let swipeFromUser = UISwipeGestureRecognizer(target: self, action: #selector(swipeAcion(swipe:)))
+        
+        self.view.addGestureRecognizer(swipeFromUser)
+        
+        //code to reload previously selected answers
         ref.child("quiz").child(quizName!).child("Questions").observeSingleEvent(of: .value) { (snapshot) in
             let dictSnapshot = snapshot.value as? NSDictionary
             for dict in dictSnapshot! {
@@ -48,15 +69,22 @@ class QuizViewController: UIViewController {
                 self.quizArray.append(tempQuestionAnswer)
             }
             self.LoadQuestionAnswer(qaSet: self.quizArray[0])
+            self.reloadSavedAnswers()
+            self.setSelectedAnswerBackgroundColour(questionIndex: 0, senderButton: nil)
             self.progressBarIncrement = 1.0/Float(self.quizArray.count)
             self.UpdateProgressBar()
+            self.view.setNeedsDisplay()
+            self.view.addGestureRecognizer(swipeFromUser)
         }
-        
     }
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        //LoadQuestionAnswer(qaSet: quizArray[0])
+    
+
+    
+    func reloadSavedAnswers(){
+        var savedAnswers  = UserDefaults.standard.dictionary(forKey: "usersSavedAnswers")
+        for questionNumber in 0..<(quizArray.count){
+            quizArray[questionNumber].usersSelectedAnswer = (savedAnswers?[quizArray[questionNumber].question] as? String)
+        }
     }
     
     func LoadQuestionAnswer(qaSet : QuizQuestionAnswer){
@@ -72,13 +100,16 @@ class QuizViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    
+    @IBOutlet weak var timeRemaining: UILabel!
+    
     @IBOutlet weak var dispQuestion: UILabel!
     
     func ResetSelection(selectedButton : UIButton) {
-        AnswerOne.backgroundColor = UIColor(red:1.00, green:0.58, blue:0.00, alpha:1.0)
-        AnswerTwo.backgroundColor = UIColor(red:1.00, green:0.58, blue:0.00, alpha:1.0)
-        AnswerThree.backgroundColor = UIColor(red:1.00, green:0.58, blue:0.00, alpha:1.0)
-        AnswerFour.backgroundColor = UIColor(red:1.00, green:0.58, blue:0.00, alpha:1.0)
+        AnswerOne.backgroundColor = UIColor(red:0.99, green:1.00, blue:0.74, alpha:1.0)
+        AnswerTwo.backgroundColor = UIColor(red:0.99, green:1.00, blue:0.74, alpha:1.0)
+        AnswerThree.backgroundColor = UIColor(red:0.99, green:1.00, blue:0.74, alpha:1.0)
+        AnswerFour.backgroundColor = UIColor(red:0.99, green:1.00, blue:0.74, alpha:1.0)
         
         AnswerOne.isSelected = false
         AnswerTwo.isSelected = false
@@ -101,14 +132,13 @@ class QuizViewController: UIViewController {
             UpdateProgressBar()
             ResetSelection(selectedButton: sender as! UIButton)
             dispQuestionIndex = dispQuestionIndex + 1
-            switch quizArray[dispQuestionIndex].usersSelectedAnswer {
-            case quizArray[dispQuestionIndex].answer[0]?: AnswerOne.backgroundColor = UIColor.red
-            case quizArray[dispQuestionIndex].answer[1]?: AnswerTwo.backgroundColor = UIColor.red
-            case quizArray[dispQuestionIndex].answer[2]?: AnswerThree.backgroundColor = UIColor.red
-            case quizArray[dispQuestionIndex].answer[3]?: AnswerFour.backgroundColor = UIColor.red
-            default: ResetSelection(selectedButton: sender as! UIButton)
-            }
+            setSelectedAnswerBackgroundColour(questionIndex: dispQuestionIndex, senderButton: (sender as! UIButton))
             LoadQuestionAnswer(qaSet: quizArray[dispQuestionIndex])
+            
+            animateAnswer(ans: AnswerOne)
+            animateAnswer(ans: AnswerTwo)
+            animateAnswer(ans: AnswerThree)
+            animateAnswer(ans: AnswerFour)
         }
     }
     func calculateScore(){
@@ -131,31 +161,62 @@ class QuizViewController: UIViewController {
             else{
                 
                 let alert = UIAlertController(title: "Sorry !!!", message: "Quiz Ended, you cannot submit your answers anymore", preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .`default`, handler: { _ in
-                    NSLog("The \"OK\" alert occured.")
+                alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .`default`, handler: { (action : UIAlertAction)  in
+                    print("action handle")
                 }))
                 self.present(alert, animated: true, completion: nil)
             }
         }
+
+        for qSet in quizArray {
+            usersSavedAnswers[qSet.question] = qSet.usersSelectedAnswer
+    }
+        print(usersSavedAnswers as Any)
+        UserDefaults.standard.set(usersSavedAnswers, forKey: "usersSavedAnswers")
         
     }
     
+    func setSelectedAnswerBackgroundColour(questionIndex: Int, senderButton: UIButton?) {
+        switch quizArray[questionIndex].usersSelectedAnswer {
+        case quizArray[questionIndex].answer[0]?: AnswerOne.backgroundColor = UIColor.red
+        case quizArray[questionIndex].answer[1]?: AnswerTwo.backgroundColor = UIColor.red
+        case quizArray[questionIndex].answer[2]?: AnswerThree.backgroundColor = UIColor.red
+        case quizArray[questionIndex].answer[3]?: AnswerFour.backgroundColor = UIColor.red
+        default:
+            if let sButton = senderButton
+            {
+                ResetSelection(selectedButton: sButton )
+            }
+        }
+    }
     @IBAction func ShowPreviousQuestion(_ sender: Any) {
-       
-        
         if dispQuestionIndex > 0{
             UpdateProgressBar()
             ResetSelection(selectedButton: sender as! UIButton)
             dispQuestionIndex = dispQuestionIndex - 1
-            switch quizArray[dispQuestionIndex].usersSelectedAnswer {
-            case quizArray[dispQuestionIndex].answer[0]?: AnswerOne.backgroundColor = UIColor.red
-            case quizArray[dispQuestionIndex].answer[1]?: AnswerTwo.backgroundColor = UIColor.red
-            case quizArray[dispQuestionIndex].answer[2]?: AnswerThree.backgroundColor = UIColor.red
-            case quizArray[dispQuestionIndex].answer[3]?: AnswerFour.backgroundColor = UIColor.red
-            default: ResetSelection(selectedButton: sender as! UIButton)
-            }
+            setSelectedAnswerBackgroundColour(questionIndex: dispQuestionIndex, senderButton: (sender as! UIButton))
             LoadQuestionAnswer(qaSet: quizArray[dispQuestionIndex])
+            
+            
+            animateAnswer(ans: AnswerOne)
+            animateAnswer(ans: AnswerTwo)
+            animateAnswer(ans: AnswerThree)
+            animateAnswer(ans: AnswerFour)
+        
+        
         }
+    }
+    
+    func animateAnswer(ans : UIButton) {
+        var tempY : CGFloat = 0.0
+        tempY = ans.center.y
+        ans.center.y = view.frame.height
+        UIView.animate(withDuration: 1.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 15, options: UIViewAnimationOptions.allowUserInteraction, animations: ({
+            ans.center.y = tempY
+        }), completion: nil)
+        
+        
+        
     }
     
     func UpdateProgressBar(){
