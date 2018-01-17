@@ -19,6 +19,7 @@
 		5E33EA971FA5446D00431575 /* BeconData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E33EA961FA5446D00431575 /* BeconData.swift */; };
 		5E33EA991FA5493B00431575 /* LoggedInUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E33EA981FA5493B00431575 /* LoggedInUser.swift */; };
 		5E3FFD0D1F8E153400F7C16C /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E3FFD0C1F8E153400F7C16C /* RegisterViewController.swift */; };
+		5E4BA00D2008477700480E40 /* FeedMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E4BA00C2008477700480E40 /* FeedMessageViewController.swift */; };
 		5E61DC5F1FF191E400068A7F /* Feed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E61DC5E1FF191E400068A7F /* Feed.swift */; };
 		5E61DC641FF1EE3E00068A7F /* QuizTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E61DC631FF1EE3E00068A7F /* QuizTableViewController.swift */; };
 		5E6AE12A1FA92CA5003E2F16 /* SettingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E6AE1291FA92CA5003E2F16 /* SettingTableViewController.swift */; };
@@ -52,6 +53,7 @@
 		5E33EA961FA5446D00431575 /* BeconData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeconData.swift; sourceTree = "<group>"; };
 		5E33EA981FA5493B00431575 /* LoggedInUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggedInUser.swift; sourceTree = "<group>"; };
 		5E3FFD0C1F8E153400F7C16C /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		5E4BA00C2008477700480E40 /* FeedMessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedMessageViewController.swift; sourceTree = "<group>"; };
 		5E61DC5E1FF191E400068A7F /* Feed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Feed.swift; sourceTree = "<group>"; };
 		5E61DC631FF1EE3E00068A7F /* QuizTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizTableViewController.swift; sourceTree = "<group>"; };
 		5E6AE1291FA92CA5003E2F16 /* SettingTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewController.swift; sourceTree = "<group>"; };
@@ -144,6 +146,7 @@
 			isa = PBXGroup;
 			children = (
 				5EFF9BDD1FF0A98200FF9B69 /* FeedTableViewCell.swift */,
+				5E4BA00C2008477700480E40 /* FeedMessageViewController.swift */,
 				5EFF9BDF1FF0AA1B00FF9B69 /* FeedTableViewController.swift */,
 				5E61DC5E1FF191E400068A7F /* Feed.swift */,
 			);
@@ -330,6 +333,7 @@
 				5E74F67D1F8F0CD000B4845E /* BeaconViewController.swift in Sources */,
 				5EFAE0F81F9C4C93002C49BA /* ForgotPasswordViewController.swift in Sources */,
 				5E3FFD0D1F8E153400F7C16C /* RegisterViewController.swift in Sources */,
+				5E4BA00D2008477700480E40 /* FeedMessageViewController.swift in Sources */,
 				5E04E9C61F8DEF3D00FED1DB /* SignInViewController.swift in Sources */,
 				5E6AE12C1FA9345B003E2F16 /* WecomeViewController.swift in Sources */,
 				5EFF9BDE1FF0A98200FF9B69 /* FeedTableViewCell.swift in Sources */,

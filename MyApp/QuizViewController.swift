@@ -40,9 +40,13 @@ class QuizViewController: UIViewController {
     
     @objc func swipeAcion(swipe : UISwipeGestureRecognizer) {
         
-        print("swiped")
+        
     }
 
+
+    @IBAction func userRightSwipe(_ sender: UISwipeGestureRecognizer) {
+        print("swiped")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -171,9 +175,17 @@ class QuizViewController: UIViewController {
         for qSet in quizArray {
             usersSavedAnswers[qSet.question] = qSet.usersSelectedAnswer
     }
-        print(usersSavedAnswers as Any)
-        UserDefaults.standard.set(usersSavedAnswers, forKey: "usersSavedAnswers")
         
+        UserDefaults.standard.set(usersSavedAnswers, forKey: "usersSavedAnswers")
+        let numberOfQuestions = quizArray.count
+        let numberOfQuestionsAnswered = (usersSavedAnswers.count-1)
+        
+        
+        let alert = UIAlertController(title: "Submit anyway", message: "You have answered \(numberOfQuestionsAnswered) of \(numberOfQuestions) queestion", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: NSLocalizedString("Submit", comment: "Default action"), style: .`default`, handler: { (action : UIAlertAction)  in
+            print("action handle")
+        }))
+        self.present(alert, animated: true, completion: nil)
     }
     
     func setSelectedAnswerBackgroundColour(questionIndex: Int, senderButton: UIButton?) {

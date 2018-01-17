@@ -8,8 +8,9 @@
 
 import Foundation
 
-class Feed{
-    var Date : String?
-    var Message : String?
-    var Header : String?
-}
+struct Feed {
+    var Date : String
+    var Message : String
+    var Header : String
+    var Name : String
+} 

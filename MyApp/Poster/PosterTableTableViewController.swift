@@ -8,10 +8,12 @@
 
 import UIKit
 import FirebaseStorage
+import Firebase
 
 class PosterTableTableViewController: UITableViewController {
     var numberOfPosters = 3
     var posterIcon = UIImage(named: "quiz75")
+    var poster : UIImage?
     
 
     override func viewDidLoad() {
@@ -19,7 +21,10 @@ class PosterTableTableViewController: UITableViewController {
         
         tableView.reloadData()
 
-        
+        //let downloadURL = "https://firebasestorage.googleapis.com/v0/b/tcs-digital-day.appspot.com/o/Posters%2FDSC_1598.jpg?alt=media&token=32efbb6a-df5a-4906-b5c7-8cd2f66ddb83"
+
+        //let dwnld = StorageReference.getData("hello")
+
         
     }
 

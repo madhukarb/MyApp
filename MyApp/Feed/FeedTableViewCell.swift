@@ -22,6 +22,6 @@ class FeedTableViewCell: UITableViewCell {
     }
 
     @IBOutlet weak var feedPublisgerName: UILabel!
-    @IBOutlet weak var feedPublishMessage: UILabel!
+    @IBOutlet weak var feedHeader: UILabel!
     @IBOutlet weak var feedPublishDate: UILabel!
 }

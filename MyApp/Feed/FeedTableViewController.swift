@@ -11,18 +11,28 @@ import Firebase
 
 class FeedTableViewController: UITableViewController {
 
-    var feeds : [Feed] = [Feed()]
+    var feeds : [Feed] = []
+    var messageText : String?
+    var date : String?
+    var author : String?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         let ref = Database.database().reference()
-        ref.child("Feed").observeSingleEvent(of: .value) { (DataFeed) in
-            let dataFeedDict = DataFeed.value as? [String : AnyObject]
-            for seq in dataFeedDict!{
-               print(seq)
-                print("new seq")
+        ref.child("Feed").observeSingleEvent(of: .value) { (snapshot) in
+            let feedDict = snapshot.value as? NSArray
+            for arrayElement  in feedDict!{
+            let arryDict = arrayElement as? NSDictionary
+                
+                let tempFeed = Feed(Date: arryDict?["Date"] as! String, Message: arryDict?["Message"] as! String, Header: arryDict?["MessageHeader"] as! String, Name: arryDict?["Name"] as! String)
+                self.feeds.append(tempFeed)
+              
             }
+            self.tableView.rowHeight = self.view.bounds.height/10
+            self.tableView.reloadData()
         }
+ 
         
         
     }
@@ -41,21 +51,34 @@ class FeedTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 3
+        return feeds.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let feedCell = tableView.dequeueReusableCell(withIdentifier: "feedCell") as? FeedTableViewCell
         
-        feedCell?.feedPublishDate.text = "1/1/2018"
-        feedCell?.feedPublishMessage.text = "My First Message"
+        feedCell?.feedPublishDate.text = feeds[indexPath.row].Date
+        feedCell?.feedPublisgerName.text = feeds[indexPath.row].Name
+        feedCell?.feedHeader.text = feeds[indexPath.row].Header
 
         return feedCell!
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        messageText = feeds[indexPath.row].Message
+        date = feeds[indexPath.row].Date
+        author = feeds[indexPath.row].Name
         performSegue(withIdentifier: "ShowMessage", sender: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destvc = segue.destination as? FeedMessageViewController{
+            destvc.messageText = messageText
+            destvc.messageBy = author
+            destvc.date = date
+            destvc.title = "Message"
+        }
     }
     /*
     // Override to support conditional editing of the table view.
