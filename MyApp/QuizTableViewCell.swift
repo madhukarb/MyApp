@@ -24,4 +24,6 @@ class QuizTableViewCell: UITableViewCell {
     @IBOutlet weak var quizWinner: UILabel!
     @IBOutlet weak var quizPublishDate: UILabel!
     @IBOutlet weak var quizNumber: UILabel!
+    
+    @IBOutlet weak var quizCellBGView: UIView!
 }

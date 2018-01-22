@@ -19,6 +19,7 @@ class FeedTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.backgroundView = UIImageView(image: UIImage(named: "Quiz_bg.jpg"))
         let ref = Database.database().reference()
         ref.child("Feed").observeSingleEvent(of: .value) { (snapshot) in
             let feedDict = snapshot.value as? NSArray

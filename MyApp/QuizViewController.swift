@@ -36,13 +36,6 @@ class QuizViewController: UIViewController {
     @IBOutlet weak var AnswerFour: UIButton!
     @IBOutlet weak var DisplayQuestion: UILabel!
     
-    
-    
-    @objc func swipeAcion(swipe : UISwipeGestureRecognizer) {
-        
-        
-    }
-
 
     @IBAction func userRightSwipe(_ sender: UISwipeGestureRecognizer) {
         print("swiped")
@@ -50,12 +43,9 @@ class QuizViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
         // Do any additional setup after loading the view.
         //LoadQuestionAnswer(qaSet: quizArray[0])
-        let swipeFromUser = UISwipeGestureRecognizer(target: self, action: #selector(swipeAcion(swipe:)))
-        
-        self.view.addGestureRecognizer(swipeFromUser)
-        
         //code to reload previously selected answers
         ref.child("quiz").child(quizName!).child("Questions").observeSingleEvent(of: .value) { (snapshot) in
             let dictSnapshot = snapshot.value as? NSDictionary
@@ -78,18 +68,10 @@ class QuizViewController: UIViewController {
             self.progressBarIncrement = 1.0/Float(self.quizArray.count)
             self.UpdateProgressBar()
             self.view.setNeedsDisplay()
-            self.view.addGestureRecognizer(swipeFromUser)
-        }
-    }
-    
 
-    
-    func reloadSavedAnswers(){
-        var savedAnswers  = UserDefaults.standard.dictionary(forKey: "usersSavedAnswers")
-        for questionNumber in 0..<(quizArray.count){
-            quizArray[questionNumber].usersSelectedAnswer = (savedAnswers?[quizArray[questionNumber].question] as? String)
         }
     }
+    
     
     func LoadQuestionAnswer(qaSet : QuizQuestionAnswer){
         DisplayQuestion.text = qaSet.question
@@ -110,10 +92,10 @@ class QuizViewController: UIViewController {
     @IBOutlet weak var dispQuestion: UILabel!
     
     func ResetSelection(selectedButton : UIButton) {
-        AnswerOne.backgroundColor = UIColor(red:0.99, green:1.00, blue:0.74, alpha:1.0)
-        AnswerTwo.backgroundColor = UIColor(red:0.99, green:1.00, blue:0.74, alpha:1.0)
-        AnswerThree.backgroundColor = UIColor(red:0.99, green:1.00, blue:0.74, alpha:1.0)
-        AnswerFour.backgroundColor = UIColor(red:0.99, green:1.00, blue:0.74, alpha:1.0)
+        AnswerOne.backgroundColor = UIColor(red:0.77, green:1.00, blue:1.00, alpha:0.55)
+        AnswerTwo.backgroundColor = UIColor(red:0.77, green:1.00, blue:1.00, alpha:0.55)
+        AnswerThree.backgroundColor = UIColor(red:0.77, green:1.00, blue:1.00, alpha:0.55)
+        AnswerFour.backgroundColor = UIColor(red:0.77, green:1.00, blue:1.00, alpha:0.55)
         
         AnswerOne.isSelected = false
         AnswerTwo.isSelected = false
@@ -161,6 +143,9 @@ class QuizViewController: UIViewController {
             if self.quizStatus! == "Active" {
                 self.calculateScore()
                 self.ref.child("users").child(LoggedInUser.uID!).child("Score").setValue(self.score)
+                let timestamp = DateFormatter.localizedString(from: NSDate() as Date, dateStyle: .short, timeStyle: .long)
+                self.ref.child("users").child(LoggedInUser.uID!).child("ScoreSubmittedTime").setValue(timestamp)
+                print(timestamp)
                 self.score = 0}
             else{
                 
@@ -226,9 +211,6 @@ class QuizViewController: UIViewController {
         UIView.animate(withDuration: 1.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 15, options: UIViewAnimationOptions.allowUserInteraction, animations: ({
             ans.center.y = tempY
         }), completion: nil)
-        
-        
-        
     }
     
     func UpdateProgressBar(){

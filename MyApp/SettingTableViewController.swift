@@ -10,6 +10,9 @@ import UIKit
 
 class SettingTableViewController: UITableViewController {
 
+    override func viewDidLoad() {
+        tableView.backgroundView = UIImageView(image: UIImage(named: "Quiz_bg.jpg"))
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

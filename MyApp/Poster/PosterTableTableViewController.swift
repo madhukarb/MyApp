@@ -18,14 +18,26 @@ class PosterTableTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.backgroundView = UIImageView(image: UIImage(named: "Quiz_bg.jpg"))
+        var imageRef: StorageReference {
+            return Storage.storage().reference().child("Posters").child("DSC_1598.jpg")
+        }
         
-        tableView.reloadData()
-
-        //let downloadURL = "https://firebasestorage.googleapis.com/v0/b/tcs-digital-day.appspot.com/o/Posters%2FDSC_1598.jpg?alt=media&token=32efbb6a-df5a-4906-b5c7-8cd2f66ddb83"
-
-        //let dwnld = StorageReference.getData("hello")
-
+        let downLoadTask = imageRef.getData(maxSize: 1024 * 1024 * 10) { (data, error) in
+            if let data = data {
+                self.poster = UIImage(data: data)
+            } else {
+                self.poster = self.posterIcon
+            }
+            
+        }
         
+        downLoadTask.observe(.progress) { (snapshot) in
+            print(snapshot.progress ?? "NO PROGRESS")
+        }
+
+        downLoadTask.resume()
+        self.tableView.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -55,6 +67,12 @@ class PosterTableTableViewController: UITableViewController {
         return cell!
     }
    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destvc = segue.destination as? PosterViewController{
+            destvc.image = poster
+        }
+    }
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: "showPoster", sender: Any?.self)
     }

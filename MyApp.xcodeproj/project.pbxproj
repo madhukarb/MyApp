@@ -27,6 +27,8 @@
 		5E74F67D1F8F0CD000B4845E /* BeaconViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E74F67C1F8F0CD000B4845E /* BeaconViewController.swift */; };
 		5E755EAF1FE225F600CF9E40 /* Quiz in Sources */ = {isa = PBXBuildFile; fileRef = 5E755EAE1FE225F600CF9E40 /* Quiz */; };
 		5E7C05281F91F9CF00F378D5 /* userStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E7C05271F91F9CF00F378D5 /* userStruct.swift */; };
+		5EE68947201444580029156B /* QuizViewControllerExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EE68946201444580029156B /* QuizViewControllerExt.swift */; };
+		5EE689492014530A0029156B /* PosterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EE689482014530A0029156B /* PosterViewController.swift */; };
 		5EECEC2E1FEF7D01002DB193 /* PosterTableTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EECEC2D1FEF7D01002DB193 /* PosterTableTableViewController.swift */; };
 		5EECEC301FEF7D3C002DB193 /* PosterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EECEC2F1FEF7D3C002DB193 /* PosterTableViewCell.swift */; };
 		5EEEE95D1FA6C11E001E3E81 /* ContentTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EEEE95C1FA6C11E001E3E81 /* ContentTabBarController.swift */; };
@@ -62,6 +64,8 @@
 		5E755EAE1FE225F600CF9E40 /* Quiz */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Quiz; path = /Users/Madhukar/Documents/ios/TCS/MyApp/MyApp/Quiz; sourceTree = "<absolute>"; };
 		5E7C05271F91F9CF00F378D5 /* userStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = userStruct.swift; sourceTree = "<group>"; };
 		5ECA602E1F9D3C1C00734A8A /* MyApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MyApp.entitlements; sourceTree = "<group>"; };
+		5EE68946201444580029156B /* QuizViewControllerExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizViewControllerExt.swift; sourceTree = "<group>"; };
+		5EE689482014530A0029156B /* PosterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PosterViewController.swift; sourceTree = "<group>"; };
 		5EECEC2D1FEF7D01002DB193 /* PosterTableTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PosterTableTableViewController.swift; sourceTree = "<group>"; };
 		5EECEC2F1FEF7D3C002DB193 /* PosterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PosterTableViewCell.swift; sourceTree = "<group>"; };
 		5EEEE95C1FA6C11E001E3E81 /* ContentTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentTabBarController.swift; sourceTree = "<group>"; };
@@ -116,6 +120,7 @@
 				5E61DC601FF1BA8B00068A7F /* Quiz */,
 				5E6AE12B1FA9345B003E2F16 /* WecomeViewController.swift */,
 				5E00065F1FE8FC8B00379AC0 /* QuizViewController.swift */,
+				5EE68946201444580029156B /* QuizViewControllerExt.swift */,
 				5E61DC631FF1EE3E00068A7F /* QuizTableViewController.swift */,
 				5E00065D1FE8E78800379AC0 /* QuizTableViewCell.swift */,
 				5E755EAE1FE225F600CF9E40 /* Quiz */,
@@ -157,6 +162,7 @@
 			isa = PBXGroup;
 			children = (
 				5EECEC2D1FEF7D01002DB193 /* PosterTableTableViewController.swift */,
+				5EE689482014530A0029156B /* PosterViewController.swift */,
 				5EECEC2F1FEF7D3C002DB193 /* PosterTableViewCell.swift */,
 			);
 			path = Poster;
@@ -344,6 +350,8 @@
 				5E7C05281F91F9CF00F378D5 /* userStruct.swift in Sources */,
 				5E61DC641FF1EE3E00068A7F /* QuizTableViewController.swift in Sources */,
 				5E6AE12A1FA92CA5003E2F16 /* SettingTableViewController.swift in Sources */,
+				5EE689492014530A0029156B /* PosterViewController.swift in Sources */,
+				5EE68947201444580029156B /* QuizViewControllerExt.swift in Sources */,
 				5E0006601FE8FC8B00379AC0 /* QuizViewController.swift in Sources */,
 				5EEEE95D1FA6C11E001E3E81 /* ContentTabBarController.swift in Sources */,
 				5E04E9C41F8DEF3D00FED1DB /* AppDelegate.swift in Sources */,
