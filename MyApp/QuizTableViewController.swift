@@ -28,8 +28,9 @@ class QuizTableViewController: UITableViewController {
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.isTranslucent = true
-        self.navigationController?.view.backgroundColor = .clear
+        
         self.navigationController?.navigationBar.backgroundColor = .clear
+        self.navigationController?.navigationBar.alpha = 0.5
         
         super.viewDidLoad()
         var ref: DatabaseReference!

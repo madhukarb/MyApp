@@ -44,7 +44,7 @@ class ForgotPasswordViewController: UIViewController, UIScrollViewDelegate {
         super.viewWillAppear(animated)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: .UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: .UIKeyboardWillHide, object: nil)
-        
+        navigationController?.isNavigationBarHidden = true
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -87,7 +87,8 @@ class ForgotPasswordViewController: UIViewController, UIScrollViewDelegate {
     
     
     @IBAction func PasswordResetCancelled(_ sender: UIButton) {
-        performSegue(withIdentifier: "UnwindToLoginFromForgotPassword", sender: nil)
+        self.dismiss(animated: true, completion: nil)
+        //performSegue(withIdentifier: "UnwindToLoginFromForgotPassword", sender: nil)
     }
     
     

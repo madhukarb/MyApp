@@ -14,14 +14,11 @@ class WecomeViewController: UIViewController {
         super.viewDidLoad()
         
         //view.backgroundColor = UIColor(red:0.27, green:0.69, blue:1.00, alpha:1.0)
-        welcomeUserName.center.y = view.frame.height
-        UIView.animate(withDuration: 2.5, delay: 0, usingSpringWithDamping: 5, initialSpringVelocity: 15, options: UIViewAnimationOptions.allowUserInteraction, animations: ({
-            self.welcomeUserName.center.y = self.view.frame.height/2
-        }), completion: nil)
-        
-        welcomeUserName.text = "Hello" + "\n" + LoggedInUser.firstName!
+       
         
     }
+    
+
     
     @IBOutlet weak var welcomeUserName: UILabel!
     override func viewDidAppear(_ animated: Bool) {
@@ -31,6 +28,12 @@ class WecomeViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.isNavigationBarHidden = true
+        welcomeUserName.center.y = view.frame.height
+        UIView.animate(withDuration: 2.5, delay: 0, usingSpringWithDamping: 5, initialSpringVelocity: 15, options: UIViewAnimationOptions.allowUserInteraction, animations: ({
+            self.welcomeUserName.center.y = self.view.frame.height/2
+        }), completion: nil)
+        
+        welcomeUserName.text = "Hello" + "\n" + LoggedInUser.firstName!
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

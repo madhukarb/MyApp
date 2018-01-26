@@ -7,9 +7,10 @@
 //
 
 import UIKit
+import FirebaseStorage
 
 class PosterViewController: UIViewController {
-
+var poster : UIImage?
     
     
     @IBOutlet weak var posterImageView: UIImageView!
@@ -19,6 +20,26 @@ class PosterViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         posterImageView.image = image
+        var imageRef: StorageReference {
+            return Storage.storage().reference().child("Posters").child("DSC_1598.jpg")
+        }
+        
+        let downLoadTask = imageRef.getData(maxSize: 1024 * 1024 * 10) { (data, error) in
+            if let data = data {
+                self.poster = UIImage(data: data)
+                self.image = self.poster
+            } else {
+                print("error")
+            }
+            
+        }
+        
+        downLoadTask.observe(.progress) { (snapshot) in
+            print(snapshot.progress ?? "NO PROGRESS")
+        }
+        
+        downLoadTask.resume()
+        
     }
 
     override func didReceiveMemoryWarning() {
