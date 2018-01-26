@@ -33,9 +33,7 @@ class FeedTableViewController: UITableViewController {
             self.tableView.rowHeight = self.view.bounds.height/10
             self.tableView.reloadData()
         }
- 
-        
-        
+        self.navigationController?.navigationBar.tintColor = .white
     }
 
     override func didReceiveMemoryWarning() {

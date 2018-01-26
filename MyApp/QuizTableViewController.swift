@@ -32,6 +32,8 @@ class QuizTableViewController: UITableViewController {
         self.navigationController?.navigationBar.backgroundColor = .clear
         self.navigationController?.navigationBar.alpha = 0.5
         
+        self.navigationController?.navigationBar.tintColor = .white
+        
         super.viewDidLoad()
         var ref: DatabaseReference!
         ref = Database.database().reference()
@@ -92,11 +94,9 @@ class QuizTableViewController: UITableViewController {
            
             QuizCell?.backgroundColor = UIColor.clear
             if model[indexPath.row].quizStatus != "Active"{
-                QuizCell?.quizCellBGView.backgroundColor = UIColor(red:0.23, green:0.51, blue:0.65, alpha:0.55)
+                QuizCell?.quizCellBGView.backgroundColor = UIColor(red:0.23, green:0.51, blue:0.65, alpha:0.85)
+                QuizCell?.quizNumber.textColor = UIColor.gray
             }
-           
-           
-            print("quiz called")
             return QuizCell!
         }
     
