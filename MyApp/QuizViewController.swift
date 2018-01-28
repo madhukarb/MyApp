@@ -92,10 +92,15 @@ class QuizViewController: UIViewController {
     @IBOutlet weak var dispQuestion: UILabel!
     
     func ResetSelection(selectedButton : UIButton) {
-        AnswerOne.backgroundColor = UIColor(red:0.77, green:1.00, blue:1.00, alpha:0.55)
-        AnswerTwo.backgroundColor = UIColor(red:0.77, green:1.00, blue:1.00, alpha:0.55)
-        AnswerThree.backgroundColor = UIColor(red:0.77, green:1.00, blue:1.00, alpha:0.55)
-        AnswerFour.backgroundColor = UIColor(red:0.77, green:1.00, blue:1.00, alpha:0.55)
+        AnswerOne.backgroundColor = UIColor(red:0.77, green:1.00, blue:1.00, alpha:1)
+        AnswerTwo.backgroundColor = UIColor(red:0.77, green:1.00, blue:1.00, alpha:1)
+        AnswerThree.backgroundColor = UIColor(red:0.77, green:1.00, blue:1.00, alpha:1)
+        AnswerFour.backgroundColor = UIColor(red:0.77, green:1.00, blue:1.00, alpha:1)
+        
+        AnswerOne.alpha = 0.55
+        AnswerTwo.alpha = 0.55
+        AnswerThree.alpha = 0.55
+        AnswerFour.alpha = 0.55
         
         AnswerOne.isSelected = false
         AnswerTwo.isSelected = false
@@ -120,11 +125,6 @@ class QuizViewController: UIViewController {
             dispQuestionIndex = dispQuestionIndex + 1
             setSelectedAnswerBackgroundColour(questionIndex: dispQuestionIndex, senderButton: (sender as! UIButton))
             LoadQuestionAnswer(qaSet: quizArray[dispQuestionIndex])
-            
-            animateAnswer(ans: AnswerOne)
-            animateAnswer(ans: AnswerTwo)
-            animateAnswer(ans: AnswerThree)
-            animateAnswer(ans: AnswerFour)
         }
     }
     func calculateScore(){
@@ -193,24 +193,7 @@ class QuizViewController: UIViewController {
             dispQuestionIndex = dispQuestionIndex - 1
             setSelectedAnswerBackgroundColour(questionIndex: dispQuestionIndex, senderButton: (sender as! UIButton))
             LoadQuestionAnswer(qaSet: quizArray[dispQuestionIndex])
-            
-            
-            animateAnswer(ans: AnswerOne)
-            animateAnswer(ans: AnswerTwo)
-            animateAnswer(ans: AnswerThree)
-            animateAnswer(ans: AnswerFour)
-        
-        
         }
-    }
-    
-    func animateAnswer(ans : UIButton) {
-        var tempY : CGFloat = 0.0
-        tempY = ans.center.y
-        ans.center.y = view.frame.height
-        UIView.animate(withDuration: 1.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 15, options: UIViewAnimationOptions.allowUserInteraction, animations: ({
-            ans.center.y = tempY
-        }), completion: nil)
     }
     
     func UpdateProgressBar(){
