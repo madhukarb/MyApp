@@ -37,21 +37,21 @@ class QuizTableViewController: UITableViewController {
         super.viewDidLoad()
         var ref: DatabaseReference!
         ref = Database.database().reference()
-        ref.child("quiz").observeSingleEvent(of: .value) { (snapshot) in
-            let postDict = snapshot.value as? [String : AnyObject]
-            for quiz in postDict!{
+        ref.child("quiz").observeSingleEvent(of: .value) { (allQuizs) in
+            let allQuizs = allQuizs.value as? [String : AnyObject]
+            for quiz in allQuizs!{
                 var tempWinner = " "
                 var tempPublishDate = " "
                 var tempQuizStatus = " "
-                for val in (quiz.value as? Dictionary<String, Any>)!{
-                    if val.key == "Publish Date"{
-                        tempPublishDate = val.value as! String
+                for quizAttribute in (quiz.value as? Dictionary<String, Any>)!{
+                    if quizAttribute.key == "Publish Date"{
+                        tempPublishDate = quizAttribute.value as! String
                     }
-                    if val.key == "Winner"{
-                        tempWinner = val.value as! String
+                    if quizAttribute.key == "Winner"{
+                        tempWinner = quizAttribute.value as! String
                     }
-                    if val.key == "Status"{
-                        tempQuizStatus = val.value as! String
+                    if quizAttribute.key == "Status"{
+                        tempQuizStatus = quizAttribute.value as! String
                     }
                 }
                 if (tempQuizStatus == "Active" || tempQuizStatus == "Ended"){

@@ -49,13 +49,13 @@ class QuizViewController: UIViewController {
         // Do any additional setup after loading the view.
         //LoadQuestionAnswer(qaSet: quizArray[0])
         //code to reload previously selected answers
-        ref.child("quiz").child(quizName!).child("Questions").observeSingleEvent(of: .value) { (snapshot) in
-            let quizQuestions = snapshot.value as? NSDictionary
-            for dict in quizQuestions! {
-                let question = dict.key as? String
+        ref.child("quiz").child(quizName!).child("Questions").observeSingleEvent(of: .value) { (allQuizQuestions) in
+            let allQuizQuestions = allQuizQuestions.value as? NSDictionary
+            for quizQuestion in allQuizQuestions! {
+                let question = quizQuestion.key as? String
                 var answerSet = [String?]()
                 var correctAns : Int?
-                for ans in (dict.value as? NSDictionary)!{
+                for ans in (quizQuestion.value as? NSDictionary)!{
                     answerSet.append(ans.key as? String)
                     if (ans.value as? String == "True" || ans.value as? String == "true"){
                         correctAns = answerSet.count - 1
