@@ -10,7 +10,7 @@ import UIKit
 import FirebaseStorage
 
 class PosterViewController: UIViewController {
-var poster : UIImage?
+    //var poster : UIImage?
     
     
     @IBOutlet weak var posterImageView: UIImageView!
@@ -24,38 +24,44 @@ var poster : UIImage?
             return Storage.storage().reference().child("Posters").child("DSC_1598.jpg")
         }
         
-        let downLoadTask = imageRef.getData(maxSize: 1024 * 1024 * 10) { (data, error) in
-            if let data = data {
-                self.poster = UIImage(data: data)
-                self.image = self.poster
-            } else {
-                print("error")
+        DispatchQueue.global(qos: .userInitiated).async {
+            let downLoadTask = imageRef.getData(maxSize: 1024 * 1024 * 10) { (data, error) in
+                if error == nil{
+                    if let data = data {
+                        //self.poster = UIImage(data: data)
+                         self.image = UIImage(data: data)
+                    }
+                } else{
+                    print(error.debugDescription)
+                }
+                
             }
-            
+            downLoadTask.observe(.success) { (snapshot) in
+                print("download complete")
+                DispatchQueue.main.async {
+                    self.posterImageView.image = self.image
+                }
+            }
+            downLoadTask.resume()
         }
         
-        downLoadTask.observe(.progress) { (snapshot) in
-            print(snapshot.progress ?? "NO PROGRESS")
-        }
-        
-        downLoadTask.resume()
         
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-
+    
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }

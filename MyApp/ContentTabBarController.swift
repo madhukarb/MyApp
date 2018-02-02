@@ -18,8 +18,7 @@ class ContentTabBarController: UITabBarController {
         self.tabBar.items?[1].image = UIImage(named: "Poster75")
         self.tabBar.items?[2].image = UIImage(named: "DititalDay75")
         self.tabBar.items?[3].image = UIImage(named: "Feed75")
-
-        
+    
     }
 
     override func didReceiveMemoryWarning() {

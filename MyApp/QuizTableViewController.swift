@@ -102,7 +102,7 @@ class QuizTableViewController: UITableViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destViewController = segue.destination as? QuizViewController{
-            destViewController.quizName = "Quiz 0"
+            destViewController.quizName =  activeQuizName
         }
     }
     

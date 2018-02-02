@@ -104,7 +104,7 @@ class ForgotPasswordViewController: UIViewController, UIScrollViewDelegate {
                 
                 let alert = UIAlertController(title: "Reset sucessful", message: "Follow instruction on email", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .cancel, handler: { (action : UIAlertAction)  in
-                    self.performSegue(withIdentifier: "UnwindToLoginFromForgotPassword", sender: nil)
+                    self.dismiss(animated: true, completion: nil)
                 }))
                 self.present(alert, animated: true, completion: nil)
             }

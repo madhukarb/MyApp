@@ -36,7 +36,9 @@ class QuizViewController: UIViewController {
     @IBOutlet weak var AnswerFour: UIButton!
     @IBOutlet weak var DisplayQuestion: UILabel!
     
-
+    @IBOutlet weak var previousButton: UIButton!
+    @IBOutlet weak var nextButton: UIButton!
+    
     @IBAction func userRightSwipe(_ sender: UISwipeGestureRecognizer) {
         print("swiped")
     }
@@ -48,14 +50,14 @@ class QuizViewController: UIViewController {
         //LoadQuestionAnswer(qaSet: quizArray[0])
         //code to reload previously selected answers
         ref.child("quiz").child(quizName!).child("Questions").observeSingleEvent(of: .value) { (snapshot) in
-            let dictSnapshot = snapshot.value as? NSDictionary
-            for dict in dictSnapshot! {
+            let quizQuestions = snapshot.value as? NSDictionary
+            for dict in quizQuestions! {
                 let question = dict.key as? String
                 var answerSet = [String?]()
                 var correctAns : Int?
                 for ans in (dict.value as? NSDictionary)!{
                     answerSet.append(ans.key as? String)
-                    if ans.value as? String == "True"{
+                    if (ans.value as? String == "True" || ans.value as? String == "true"){
                         correctAns = answerSet.count - 1
                     }
                 }
@@ -70,8 +72,18 @@ class QuizViewController: UIViewController {
             self.view.setNeedsDisplay()
 
         }
+        previousButton.isEnabled = false
+        previousButton.alpha = 0.2
+        let transform: CGAffineTransform = CGAffineTransform(scaleX: 1.0, y: 5.0)
+        //progressBar.progressImage = UIImage(named: "quiz75")
+        progressBar.tintColor = UIColor(red:0.40, green:1.00, blue:0.53, alpha: 0.8)
+        progressBar.transform = transform
     }
     
+    
+    @IBAction func someAnswerSelected(_ sender: UIButton) {
+        UpdateProgressBar()
+    }
     
     func LoadQuestionAnswer(qaSet : QuizQuestionAnswer){
         DisplayQuestion.text = qaSet.question
@@ -118,13 +130,19 @@ class QuizViewController: UIViewController {
     
     
     @IBAction func ShowNextQuestion(_ sender: Any) {
-        
+        previousButton.isEnabled = true
+        previousButton.alpha = 1.0
+        if dispQuestionIndex == quizArray.count - 2{
+            nextButton.isEnabled = false
+            nextButton.alpha = 0.2
+        }
         if dispQuestionIndex < quizArray.count - 1{
             UpdateProgressBar()
             ResetSelection(selectedButton: sender as! UIButton)
             dispQuestionIndex = dispQuestionIndex + 1
             setSelectedAnswerBackgroundColour(questionIndex: dispQuestionIndex, senderButton: (sender as! UIButton))
             LoadQuestionAnswer(qaSet: quizArray[dispQuestionIndex])
+            
         }
     }
     func calculateScore(){
@@ -143,9 +161,9 @@ class QuizViewController: UIViewController {
             if self.quizStatus! == "Active" {
                 self.calculateScore()
                 self.ref.child("users").child(LoggedInUser.uID!).child("Score").setValue(self.score)
+                self.ref.child("users").child(LoggedInUser.uID!).child("QuizName").setValue(self.quizName)
                 let timestamp = DateFormatter.localizedString(from: NSDate() as Date, dateStyle: .short, timeStyle: .long)
                 self.ref.child("users").child(LoggedInUser.uID!).child("ScoreSubmittedTime").setValue(timestamp)
-                print(timestamp)
                 self.score = 0}
             else{
                 
@@ -187,6 +205,12 @@ class QuizViewController: UIViewController {
         }
     }
     @IBAction func ShowPreviousQuestion(_ sender: Any) {
+        nextButton.isEnabled = true
+        nextButton.alpha = 1
+        if dispQuestionIndex == 1 {
+            previousButton.isEnabled = false
+            previousButton.alpha = 0.2
+        }
         if dispQuestionIndex > 0{
             UpdateProgressBar()
             ResetSelection(selectedButton: sender as! UIButton)
