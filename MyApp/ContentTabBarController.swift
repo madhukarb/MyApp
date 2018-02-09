@@ -15,12 +15,17 @@ class ContentTabBarController: UITabBarController {
         
         self.title = tabBar.items?[0].title
         self.tabBar.items?[0].image = UIImage(named: "quiz75")
-        self.tabBar.items?[1].image = UIImage(named: "Poster75")
-        self.tabBar.items?[2].image = UIImage(named: "DititalDay75")
-        self.tabBar.items?[3].image = UIImage(named: "Feed75")
-    
+        //self.tabBar.items?[1].image = UIImage(named: "Poster75")
+        self.tabBar.items?[1].image = UIImage(named: "DititalDay75")
+        self.tabBar.items?[2].image = UIImage(named: "Feed75")
+        
     }
+    
 
+    @IBAction func aboutAction(_ sender: UIBarButtonItem) {
+        print("about p")
+        
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

@@ -57,7 +57,7 @@ class QuizViewController: UIViewController {
                 var correctAns : Int?
                 for ans in (quizQuestion.value as? NSDictionary)!{
                     answerSet.append(ans.key as? String)
-                    if (ans.value as? String == "True" || ans.value as? String == "true"){
+                    if (ans.value as? String == "True" || ans.value as? String == "true" || (ans.value as? Bool)! == true){
                         correctAns = answerSet.count - 1
                     }
                 }
@@ -130,6 +130,7 @@ class QuizViewController: UIViewController {
     
     
     @IBAction func ShowNextQuestion(_ sender: Any) {
+        
         previousButton.isEnabled = true
         previousButton.alpha = 1.0
         if dispQuestionIndex == quizArray.count - 2{

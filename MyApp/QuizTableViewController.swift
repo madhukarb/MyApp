@@ -19,7 +19,6 @@ class QuizTableViewController: UITableViewController {
     
     var activeQuizName : String?
     @IBOutlet weak var quizNumber: UILabel!
-    //var model: [(String, String, String)] = [(" "," "," ")]
     var model:[(quizName: String, publishDate: String, winner: String, quizStatus: String)] = []
     
     override func viewDidLoad() {
@@ -57,14 +56,26 @@ class QuizTableViewController: UITableViewController {
                 if (tempQuizStatus == "Active" || tempQuizStatus == "Ended"){
                 self.model.append((quizName: quiz.key , publishDate: tempPublishDate, winner: tempWinner, quizStatus: tempQuizStatus))
                 }
-                self.tableView.reloadData()
+                
+                
+                
             }
-          
+        self.setActiveQuizIndex()
+            self.tableView.reloadData()
         }
+        
  
         }
     
-   
+    func setActiveQuizIndex(){
+        var activeQuizIndex = 0
+        for index in 0...(model.count-1){
+            if model[index].quizStatus == "Active"{
+                activeQuizIndex = index
+            }
+        }
+        model.swapAt(0, activeQuizIndex)
+    }
         
         override func didReceiveMemoryWarning() {
             super.didReceiveMemoryWarning()

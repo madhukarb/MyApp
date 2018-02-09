@@ -14,6 +14,7 @@
 		5E04E9C91F8DEF3D00FED1DB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5E04E9C71F8DEF3D00FED1DB /* Main.storyboard */; };
 		5E04E9CB1F8DEF3D00FED1DB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5E04E9CA1F8DEF3D00FED1DB /* Assets.xcassets */; };
 		5E04E9CE1F8DEF3D00FED1DB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5E04E9CC1F8DEF3D00FED1DB /* LaunchScreen.storyboard */; };
+		5E10B0F1202B112A0059FB74 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E10B0F0202B112A0059FB74 /* AboutViewController.swift */; };
 		5E1A6DB81F9C0995003F600D /* LoginTextFeild.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1A6DB71F9C0995003F600D /* LoginTextFeild.swift */; };
 		5E2E8F8B1FA028A800FBB6E6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5E2E8F8A1FA028A800FBB6E6 /* GoogleService-Info.plist */; };
 		5E33EA971FA5446D00431575 /* BeconData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E33EA961FA5446D00431575 /* BeconData.swift */; };
@@ -27,9 +28,6 @@
 		5E74F67D1F8F0CD000B4845E /* BeaconViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E74F67C1F8F0CD000B4845E /* BeaconViewController.swift */; };
 		5E7C05281F91F9CF00F378D5 /* userStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E7C05271F91F9CF00F378D5 /* userStruct.swift */; };
 		5EE68947201444580029156B /* QuizViewControllerExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EE68946201444580029156B /* QuizViewControllerExt.swift */; };
-		5EE689492014530A0029156B /* PosterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EE689482014530A0029156B /* PosterViewController.swift */; };
-		5EECEC2E1FEF7D01002DB193 /* PosterTableTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EECEC2D1FEF7D01002DB193 /* PosterTableTableViewController.swift */; };
-		5EECEC301FEF7D3C002DB193 /* PosterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EECEC2F1FEF7D3C002DB193 /* PosterTableViewCell.swift */; };
 		5EEEE95D1FA6C11E001E3E81 /* ContentTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EEEE95C1FA6C11E001E3E81 /* ContentTabBarController.swift */; };
 		5EFAE0F81F9C4C93002C49BA /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EFAE0F71F9C4C93002C49BA /* ForgotPasswordViewController.swift */; };
 		5EFF9BDE1FF0A98200FF9B69 /* FeedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EFF9BDD1FF0A98200FF9B69 /* FeedTableViewCell.swift */; };
@@ -49,6 +47,7 @@
 		5E04E9CA1F8DEF3D00FED1DB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5E04E9CD1F8DEF3D00FED1DB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5E04E9CF1F8DEF3D00FED1DB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5E10B0F0202B112A0059FB74 /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		5E1A6DB71F9C0995003F600D /* LoginTextFeild.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTextFeild.swift; sourceTree = "<group>"; };
 		5E2E8F8A1FA028A800FBB6E6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5E33EA961FA5446D00431575 /* BeconData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeconData.swift; sourceTree = "<group>"; };
@@ -63,9 +62,6 @@
 		5E7C05271F91F9CF00F378D5 /* userStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = userStruct.swift; sourceTree = "<group>"; };
 		5ECA602E1F9D3C1C00734A8A /* MyApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MyApp.entitlements; sourceTree = "<group>"; };
 		5EE68946201444580029156B /* QuizViewControllerExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizViewControllerExt.swift; sourceTree = "<group>"; };
-		5EE689482014530A0029156B /* PosterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PosterViewController.swift; sourceTree = "<group>"; };
-		5EECEC2D1FEF7D01002DB193 /* PosterTableTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PosterTableTableViewController.swift; sourceTree = "<group>"; };
-		5EECEC2F1FEF7D3C002DB193 /* PosterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PosterTableViewCell.swift; sourceTree = "<group>"; };
 		5EEEE95C1FA6C11E001E3E81 /* ContentTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentTabBarController.swift; sourceTree = "<group>"; };
 		5EFAE0F71F9C4C93002C49BA /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
 		5EFF9BDD1FF0A98200FF9B69 /* FeedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedTableViewCell.swift; sourceTree = "<group>"; };
@@ -118,6 +114,7 @@
 				5E61DC601FF1BA8B00068A7F /* Quiz */,
 				5E6AE12B1FA9345B003E2F16 /* WecomeViewController.swift */,
 				5E00065F1FE8FC8B00379AC0 /* QuizViewController.swift */,
+				5E10B0F0202B112A0059FB74 /* AboutViewController.swift */,
 				5EE68946201444580029156B /* QuizViewControllerExt.swift */,
 				5E61DC631FF1EE3E00068A7F /* QuizTableViewController.swift */,
 				5E00065D1FE8E78800379AC0 /* QuizTableViewCell.swift */,
@@ -158,9 +155,6 @@
 		5E61DC621FF1CD1B00068A7F /* Poster */ = {
 			isa = PBXGroup;
 			children = (
-				5EECEC2D1FEF7D01002DB193 /* PosterTableTableViewController.swift */,
-				5EE689482014530A0029156B /* PosterViewController.swift */,
-				5EECEC2F1FEF7D3C002DB193 /* PosterTableViewCell.swift */,
 			);
 			path = Poster;
 			sourceTree = "<group>";
@@ -330,11 +324,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5EECEC301FEF7D3C002DB193 /* PosterTableViewCell.swift in Sources */,
 				5E61DC5F1FF191E400068A7F /* Feed.swift in Sources */,
-				5EECEC2E1FEF7D01002DB193 /* PosterTableTableViewController.swift in Sources */,
 				5E74F67D1F8F0CD000B4845E /* BeaconViewController.swift in Sources */,
 				5EFAE0F81F9C4C93002C49BA /* ForgotPasswordViewController.swift in Sources */,
+				5E10B0F1202B112A0059FB74 /* AboutViewController.swift in Sources */,
 				5E3FFD0D1F8E153400F7C16C /* RegisterViewController.swift in Sources */,
 				5E4BA00D2008477700480E40 /* FeedMessageViewController.swift in Sources */,
 				5E04E9C61F8DEF3D00FED1DB /* SignInViewController.swift in Sources */,
@@ -347,7 +340,6 @@
 				5E7C05281F91F9CF00F378D5 /* userStruct.swift in Sources */,
 				5E61DC641FF1EE3E00068A7F /* QuizTableViewController.swift in Sources */,
 				5E6AE12A1FA92CA5003E2F16 /* SettingTableViewController.swift in Sources */,
-				5EE689492014530A0029156B /* PosterViewController.swift in Sources */,
 				5EE68947201444580029156B /* QuizViewControllerExt.swift in Sources */,
 				5E0006601FE8FC8B00379AC0 /* QuizViewController.swift in Sources */,
 				5EEEE95D1FA6C11E001E3E81 /* ContentTabBarController.swift in Sources */,
